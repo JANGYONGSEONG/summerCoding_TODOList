@@ -44,10 +44,10 @@ describe('POST /plans', () => {
     });
 });
 
-describe('PATCH /plans/:id/:title', () => {
+describe('PATCH /plans/:id/title/:title', () => {
   it('should respond with plan title', (done) => {
     request(app)
-      .patch('/plans/Develope TODOList_1')
+      .patch('/plans/1/title/Develope TODOList_1')
       .expect(200)
       .end((err, res)=>{
         if(err){
@@ -61,19 +61,20 @@ describe('PATCH /plans/:id/:title', () => {
   });
 });
 
-describe('PATCH /plans/:id/:content', () => {
+describe('PATCH /plans/:id/content/:content', () => {
   it('should respond with plan content', (done) => {
     request(app)
-      .patch('/plans/Complete 2019 Summer Coding')
+      .patch('/plans/1/content/Complete 2019 Summer Coding')
       .expect(200)
       .end((err, res)=>{
         if(err){
           done(err);
           return;
         }
-        res.body.should.have.properties('title');
-        res.body.title.should.equal('Complete 2019 Summer Coding');
-      })
+        res.body.should.have.properties('content');
+        res.body.content.should.equal('Complete 2019 Summer Coding');
+      });
+      done();
   });
 });
 
