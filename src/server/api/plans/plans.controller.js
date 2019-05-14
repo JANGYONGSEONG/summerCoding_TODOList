@@ -60,19 +60,47 @@ exports.create = (req,res) => {
   });
 }
 
-/*
 exports.destroy = (req,res) => {
-
+  const id = req.params.id;
+  connection.query('delete from plan where id = ?',[id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(204).send();
+  });
 }
 
 exports.modifyTitle = (req,res) => {
-
+  const id = req.params.id;
+  const title = req.params.title;
+  connection.query('update plan set title = ? where id = ?',[title,id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(200).json(
+      {
+        title: title
+      }
+    );
+  });
 }
 
 exports.modifyContent = (req,res) => {
-
+  const id = req.params.id;
+  const content = req.params.content;
+  connection.query('update plan set content = ? where id = ?',[content,id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(200).json(
+      {
+        content: content
+      }
+    );
+  });
 }
 
+/*
 exports.modifyDeadLine = (req,res) => {
 
 }

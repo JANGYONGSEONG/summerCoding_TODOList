@@ -8,13 +8,13 @@ router.get('/',controller.show);
 
 router.post('/',controller.create);
 
-/*
 router.delete('/:id',controller.destroy);
 
-router.patch('/:id/:title',controller.modifyTitle);
+router.patch('/:id/title/:title',controller.modifyTitle);
 
-router.patch('/:id/:content',controller.modifyContent);
+router.patch('/:id/content/:content',controller.modifyContent);
 
+/*
 router.patch('/:id/:date',controller.modifyDate);
 
 router.patch('/:id/:priority',controller.modifyPriority);
