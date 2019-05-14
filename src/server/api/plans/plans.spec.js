@@ -78,6 +78,7 @@ describe('PATCH /plans/:id/content/:content', () => {
   });
 });
 
+
 describe('DELETE /plans/:id', () => {
     it('should return 204 status code', (done) => {
       request(app)
@@ -91,4 +92,56 @@ describe('DELETE /plans/:id', () => {
         });
         done();
     });
+});
+
+
+describe('PATCH /plans/:id/date/:date', () => {
+  it('should respond with plan date', (done) => {
+    request(app)
+      .patch('/plans/1/date/2019-05-19 23:59:59')
+      .expect(200)
+      .end((err, res)=>{
+        if(err){
+          done(err);
+          return;
+        }
+        res.body.should.have.properties('date');
+        res.body.date.should.equal('2019-05-19 23:59:59');
+      });
+      done();
+  });
+});
+
+describe('PATCH /plans/:id/priority/:priority', () => {
+  it('should respond with plan priority', (done) => {
+    request(app)
+      .patch('/plans/1/priority/HIGH')
+      .expect(200)
+      .end((err, res)=>{
+        if(err){
+          done(err);
+          return;
+        }
+        res.body.should.have.properties('priority');
+        res.body.priority.should.equal('HIGH');
+      });
+      done();
+  });
+});
+
+describe('PATCH /plans/:id/status/:status', () => {
+  it('should respond with plan status', (done) => {
+    request(app)
+      .patch('/plans/1/status/Working on it')
+      .expect(200)
+      .end((err, res)=>{
+        if(err){
+          done(err);
+          return;
+        }
+        res.body.should.have.properties('status');
+        res.body.status.should.equal('Working on it');
+      });
+      done();
+  });
 });
