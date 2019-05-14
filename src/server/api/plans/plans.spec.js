@@ -22,6 +22,7 @@ describe('GET /plans', () => {
     });
 });
 
+
 describe('POST /plans', () => {
     it('should respond with plan', (done) => {
       request(app)
@@ -30,13 +31,13 @@ describe('POST /plans', () => {
           title: 'Develope TODOList',
           content: 'Complete 2019 summer coding'
         })
-        .expect(200)
+        .expect(201)
         .end((err, res)=>{
           if(err){
             done(err);
             return;
           }
-          res.body.should.have.properties('id','title','content', 'date', 'priority', 'status', 'alarm');
+          res.body.should.have.properties('title','content');
           res.body.title.should.equal('Develope TODOList');
           res.body.content.should.equal('Complete 2019 summer coding');
         });
