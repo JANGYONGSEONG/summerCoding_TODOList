@@ -100,19 +100,53 @@ exports.modifyContent = (req,res) => {
   });
 }
 
-/*
-exports.modifyDeadLine = (req,res) => {
 
+exports.modifyDate = (req,res) => {
+  const id = req.params.id;
+  const date = req.params.date;
+  connection.query('update plan set date = ? where id = ?',[date,id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(200).json(
+      {
+        date: date
+      }
+    );
+  });
 }
 
 exports.modifyPriority = (req,res) => {
-
+  const id = req.params.id;
+  const priority = req.params.priority;
+  connection.query('update plan set priority = ? where id = ?',[priority,id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(200).json(
+      {
+        priority: priority
+      }
+    );
+  });
 }
 
-exports.modifyComplete = (req,res) => {
-
+exports.modifyStatus = (req,res) => {
+  const id = req.params.id;
+  const status = req.params.status;
+  connection.query('update plan set status = ? where id = ?',[status,id],function(err,result){
+    if(err){
+      throw err;
+    }
+    return res.status(200).json(
+      {
+        status: status
+      }
+    );
+  });
 }
 
+/*
 exports.modifyAlarm = (req,res) => {
 
 }

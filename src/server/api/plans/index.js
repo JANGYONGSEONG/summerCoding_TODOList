@@ -14,13 +14,13 @@ router.patch('/:id/title/:title',controller.modifyTitle);
 
 router.patch('/:id/content/:content',controller.modifyContent);
 
+router.patch('/:id/date/:date',controller.modifyDate);
+
+router.patch('/:id/priority/:priority',controller.modifyPriority);
+
+router.patch('/:id/status/:status',controller.modifyStatus);
+
 /*
-router.patch('/:id/:date',controller.modifyDate);
-
-router.patch('/:id/:priority',controller.modifyPriority);
-
-router.patch('/:id/:status',controller.modifyStatus);
-
 router.patch('/:id/:alarm',controller.modifyAlarm);
 */
 
