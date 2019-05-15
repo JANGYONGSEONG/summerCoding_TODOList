@@ -29,6 +29,7 @@ function create(title,content){
   })
   .then(res => {
     const plan = {
+      id: res.data.id,
       title: res.data.title,
       content: res.data.content
     }
