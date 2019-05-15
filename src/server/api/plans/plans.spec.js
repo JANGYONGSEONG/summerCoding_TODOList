@@ -36,7 +36,7 @@ describe('POST /plans', () => {
             done(err);
             return;
           }
-          res.body.should.have.properties('title','content');
+          res.body.should.have.properties('id','title','content');
           res.body.title.should.equal('Develope TODOList');
           res.body.content.should.equal('Complete 2019 summer coding');
         });
@@ -47,7 +47,7 @@ describe('POST /plans', () => {
 describe('PATCH /plans/title/:id/:title', () => {
   it('should respond with plan title', (done) => {
     request(app)
-      .patch('/plans/1/title/Develope TODOList_1')
+      .patch('/plans/title/1/Develope TODOList_1')
       .expect(200)
       .end((err, res)=>{
         if(err){
@@ -64,7 +64,7 @@ describe('PATCH /plans/title/:id/:title', () => {
 describe('PATCH /plans/content/:id/:content', () => {
   it('should respond with plan content', (done) => {
     request(app)
-      .patch('/plans/1/content/Complete 2019 Summer Coding')
+      .patch('/plans/content/1/Complete 2019 Summer Coding')
       .expect(200)
       .end((err, res)=>{
         if(err){
@@ -78,7 +78,7 @@ describe('PATCH /plans/content/:id/:content', () => {
   });
 });
 
-
+/*
 describe('DELETE /plans/:id', () => {
     it('should return 204 status code', (done) => {
       request(app)
@@ -93,12 +93,12 @@ describe('DELETE /plans/:id', () => {
         done();
     });
 });
-
+*/
 
 describe('PATCH /plans/date/:id/:date', () => {
   it('should respond with plan date', (done) => {
     request(app)
-      .patch('/plans/1/date/2019-05-19 23:59:59')
+      .patch('/plans/date/1/2019-05-19 23:59:59')
       .expect(200)
       .end((err, res)=>{
         if(err){
@@ -115,7 +115,7 @@ describe('PATCH /plans/date/:id/:date', () => {
 describe('PATCH /plans/priority/:id/:priority', () => {
   it('should respond with plan priority', (done) => {
     request(app)
-      .patch('/plans/1/priority/HIGH')
+      .patch('/plans/priority/1/HIGH')
       .expect(200)
       .end((err, res)=>{
         if(err){
@@ -132,7 +132,7 @@ describe('PATCH /plans/priority/:id/:priority', () => {
 describe('PATCH /plans/status/:id/:status', () => {
   it('should respond with plan status', (done) => {
     request(app)
-      .patch('/plans/1/status/Working on it')
+      .patch('/plans/status/1/Working on it')
       .expect(200)
       .end((err, res)=>{
         if(err){
