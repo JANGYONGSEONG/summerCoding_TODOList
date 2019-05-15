@@ -44,7 +44,7 @@ describe('POST /plans', () => {
     });
 });
 
-describe('PATCH /plans/:id/title/:title', () => {
+describe('PATCH /plans/title/:id/:title', () => {
   it('should respond with plan title', (done) => {
     request(app)
       .patch('/plans/1/title/Develope TODOList_1')
@@ -61,7 +61,7 @@ describe('PATCH /plans/:id/title/:title', () => {
   });
 });
 
-describe('PATCH /plans/:id/content/:content', () => {
+describe('PATCH /plans/content/:id/:content', () => {
   it('should respond with plan content', (done) => {
     request(app)
       .patch('/plans/1/content/Complete 2019 Summer Coding')
@@ -95,7 +95,7 @@ describe('DELETE /plans/:id', () => {
 });
 
 
-describe('PATCH /plans/:id/date/:date', () => {
+describe('PATCH /plans/date/:id/:date', () => {
   it('should respond with plan date', (done) => {
     request(app)
       .patch('/plans/1/date/2019-05-19 23:59:59')
@@ -112,7 +112,7 @@ describe('PATCH /plans/:id/date/:date', () => {
   });
 });
 
-describe('PATCH /plans/:id/priority/:priority', () => {
+describe('PATCH /plans/priority/:id/:priority', () => {
   it('should respond with plan priority', (done) => {
     request(app)
       .patch('/plans/1/priority/HIGH')
@@ -129,7 +129,7 @@ describe('PATCH /plans/:id/priority/:priority', () => {
   });
 });
 
-describe('PATCH /plans/:id/status/:status', () => {
+describe('PATCH /plans/status/:id/:status', () => {
   it('should respond with plan status', (done) => {
     request(app)
       .patch('/plans/1/status/Working on it')
