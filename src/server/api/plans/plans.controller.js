@@ -1,6 +1,6 @@
 const MyApp = require("../../app");
 const bodyParser = MyApp.bodyParser;
-
+const async = require('async');
 const mysql = require('mysql');
 
 const dbConfig = {
@@ -47,16 +47,33 @@ exports.show = (req,res) => {
 exports.create = (req,res) => {
   const title = req.body.title;
   const content = req.body.content;
-  connection.query('insert into plan(title,content) values (?,?)',[title,content],function(err,result){
-    if(err){
-      throw err;
+
+  const tasks = [
+    function(callback){
+      connection.query('insert into plan(title,content) values (?,?)',[title,content],function(err,result){
+        if(err){
+          throw err;
+        }
+        callback(null)
+      });
+    },
+    function(callback){
+      connection.query('select id from plan where title = ?',[title],function(err,row){
+        if(err){
+          throw err;
+        }
+        return res.status(201).json({
+          id: row[0].id,
+          title: title,
+          content: content
+        });
+      });
     }
-    return res.status(201).json(
-      {
-        title:title,
-        content:content
-      }
-    );
+  ];
+
+  async.waterfall(tasks,function(err){
+    if (err)
+        throw err;
   });
 }
 
