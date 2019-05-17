@@ -4,7 +4,7 @@ export const PlanService = {
   show,
   create,
   destroy,
-  modifyTilte,
+  modifyTitle,
   modifyContent,
   modifyPriority,
   modifyStatus,
@@ -54,7 +54,7 @@ function destroy(id){
   });
 };
 
-function modifyTilte(id,title){
+function modifyTitle(id,title){
   return axios.patch('/api/plans/title',{
     params: {
       id: id,
@@ -62,7 +62,11 @@ function modifyTilte(id,title){
     }
   })
   .then(res => {
-    return res.data.title;
+    const plan = {
+      id: res.data.id,
+      title: res.data.title
+    }
+    return plan;
   })
   .catch(err => {
     return err;
@@ -77,7 +81,11 @@ function modifyContent(id,content){
     }
   })
   .then(res => {
-    return res.data.content;
+    const plan = {
+      id: res.data.id,
+      content: res.data.content
+    }
+    return plan;
   })
   .catch(err => {
     return err;
@@ -92,7 +100,11 @@ function modifyPriority(id,priority){
     }
   })
   .then(res => {
-    return res.data.priority;
+    const plan = {
+      id: res.data.id,
+      priority: res.data.priority
+    }
+    return plan;
   })
   .catch(err => {
     return err;
@@ -107,7 +119,11 @@ function modifyStatus(id,status){
     }
   })
   .then(res => {
-    return res.data.status;
+    const plan = {
+      id: res.data.id,
+      status: res.data.status
+    }
+    return plan;
   })
   .catch(err => {
     return err;
@@ -122,7 +138,11 @@ function modifyDate(id,date){
     }
   })
   .then(res => {
-    return res.data.date;
+    const plan = {
+      id: res.data.id,
+      date: res.data.date
+    }
+    return plan;
   })
   .catch(err => {
     return err;
