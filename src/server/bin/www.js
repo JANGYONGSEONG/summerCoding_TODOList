@@ -1,4 +1,4 @@
-const MyApp = requier('../app');
+const MyApp = require('../app');
 const app = MyApp.app;
 
 const port = 8080;
