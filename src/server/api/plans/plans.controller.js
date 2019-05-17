@@ -136,31 +136,58 @@ exports.modifyDate = (req,res) => {
 exports.modifyPriority = (req,res) => {
   const id = req.params.id;
   const priority = req.params.priority;
-  connection.query('update plan set priority = ? where id = ?',[priority,id],function(err,result){
-    if(err){
-      throw err;
-    }
-    return res.status(200).json(
-      {
-        priority: priority
+  if(priority==="empty"){
+    connection.query('update plan set priority = NULL where id = ?',[id],function(err,result){
+      if(err){
+        throw err;
       }
-    );
-  });
+      return res.status(200).json(
+        {
+          priority: ""
+        }
+      );
+    });
+  }else{
+    connection.query('update plan set priority = ? where id = ?',[priority,id],function(err,result){
+      if(err){
+        throw err;
+      }
+      return res.status(200).json(
+        {
+          priority: priority
+        }
+      );
+    });
+  }
+
 }
 
 exports.modifyStatus = (req,res) => {
   const id = req.params.id;
   const status = req.params.status;
-  connection.query('update plan set status = ? where id = ?',[status,id],function(err,result){
-    if(err){
-      throw err;
-    }
-    return res.status(200).json(
-      {
-        status: status
+  if(status==="empty"){
+    connection.query('update plan set status = NULL where id = ?',[id],function(err,result){
+      if(err){
+        throw err;
       }
-    );
-  });
+      return res.status(200).json(
+        {
+          status: ""
+        }
+      );
+    });
+  }else{
+    connection.query('update plan set status = ? where id = ?',[status,id],function(err,result){
+      if(err){
+        throw err;
+      }
+      return res.status(200).json(
+        {
+          status: status
+        }
+      );
+    });
+  }
 }
 
 /*
