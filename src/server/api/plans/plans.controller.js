@@ -40,7 +40,7 @@ exports.show = (req,res) => {
     if(err){
       throw err;
     }
-    return res.status(200).json(row);
+    return res.status(200).json({plans:row});
   });
 }
 

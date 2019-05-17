@@ -37,6 +37,7 @@ describe('POST /plans', () => {
             return;
           }
           res.body.should.have.properties('id','title','content');
+          res.body.id.should.equal(1);
           res.body.title.should.equal('Develope TODOList');
           res.body.content.should.equal('Complete 2019 summer coding');
         });
@@ -78,7 +79,6 @@ describe('PATCH /plans/content/:id/:content', () => {
   });
 });
 
-/*
 describe('DELETE /plans/:id', () => {
     it('should return 204 status code', (done) => {
       request(app)
@@ -93,7 +93,6 @@ describe('DELETE /plans/:id', () => {
         done();
     });
 });
-*/
 
 describe('PATCH /plans/date/:id/:date', () => {
   it('should respond with plan date', (done) => {
