@@ -2,6 +2,7 @@ import { PlanConstants } from '../constants';
 import { PlanService } from '../services/PlanService';
 
 export const PlanActions = {
+  setFormStatus,
   show,
   create,
   destory,
@@ -11,6 +12,10 @@ export const PlanActions = {
   modifyStatus,
   modifyDate
 };
+
+function setFormStatus(flag){
+  return flag ? {type: PlanConstants.PLAN_FORM_ON} : {type: PlanConstants.PLAN_FORM_OFF}
+}
 
 function show(){
   return dispatch => {
