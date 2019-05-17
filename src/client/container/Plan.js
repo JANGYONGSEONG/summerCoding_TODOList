@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {PlanActions} from '../actions';
-
+import {Priority,Status} from '../components';
 class Plan extends Component{
   constructor(props){
     super(props);
@@ -47,27 +47,38 @@ class Plan extends Component{
   }
 
   handleClick(e){
-    if(e.target.name==="save"){
-      this.props.create(this.state.value.title,this.state.value.content);
-    }else if(e.target.name==="cancel"){
-      if(this.props.isCreatePlanOn){
+    switch(e){
+      case "save":
+        this.props.create(this.state.value.title,this.state.value.content);
+        break;
+
+      case "cancel":
         this.setState({value: {title:'',content:''}});
         this.props.setFormStatus(false);
-      }
-    }else if(e.target.name==="remove"){
-      this.props.remove(e.target.value);
-    }else if(e.target.name==="title_change"){
-      this.props.modifyTitle(e.target.value,this.state.value.title);
-      this.setState(state => ({
-        ...state,
-        isTitleChange: false
-      }));
-    }else if(e.target.name==="content_change"){
-      this.props.modifyContent(e.target.value,this.state.value.content);
-      this.setState(state => ({
-        ...state,
-        isContentChange: false
-      }));
+        break;
+
+      case "remove":
+        this.props.remove(this.props.plan.id);
+        break;
+
+      case "title_change":
+        this.props.modifyTitle(this.props.plan.id,this.state.value.title);
+        this.setState(state => ({
+          ...state,
+          isTitleChange: false
+        }));
+        break;
+
+      case "content_change":
+        this.props.modifyContent(this.props.plan.id,this.state.value.content);
+        this.setState(state => ({
+          ...state,
+          isContentChange: false
+        }));
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -76,11 +87,11 @@ class Plan extends Component{
     let titleChangeButton;
     let contentChangeButton;
     if(this.state.isTitleChange){
-      titleChangeButton = <button onClick = {this.handleClick} name = "title_change" value={this.props.plan.id}>수정</button>
+      titleChangeButton = <button onClick={this.handleClick} name="title_change">수정</button>
     }
 
     if(this.state.isContentChange){
-      contentChangeButton = <button onClick = {this.handleClick} name = "content_change" value={this.props.plan.id}>수정</button>
+      contentChangeButton = <button onClick={this.handleClick} name="content_change">수정</button>
     }
 
     if(this.props.isForm){
@@ -89,8 +100,8 @@ class Plan extends Component{
           <input type="text" name="title" placeholder="title" value={this.state.value.title} onChange={this.handleChange}/>
           <input type="text" name="content" placeholder="content" value={this.state.value.content} onChange={this.handleChange}/>
           <div>
-            <button onClick = {this.handleClick} name = "save">저장</button>
-            <button onClick = {this.handleClick} name = "cancel">취소</button>
+            <button onClick={this.handleClick} name="save">저장</button>
+            <button onClick={this.handleClick} name="cancel">취소</button>
           </div>
         </div>
       )
@@ -101,8 +112,10 @@ class Plan extends Component{
           {titleChangeButton}
           <input type="text" name="content" defaultValue={this.state.value.content} onChange={this.handleChange}/>
           {contentChangeButton}
+          <Priority id={this.props.plan.id} priority={this.props.plan.priority} modifyPriority={this.props.modifyPriority}/>
+          <Status id={this.props.plan.id} status={this.props.plan.status} modifyStatus={this.props.modifyStatus}/>
           <div>
-            <button onClick = {this.handleClick} name = "remove" value={this.props.plan.id}>삭제</button>
+            <button onClick={this.handleClick} name="remove">삭제</button>
           </div>
         </div>
       )
@@ -139,7 +152,16 @@ const mapDispatchToProps = (dispatch) => {
     },
     modifyContent: (id,content) => {
       dispatch(PlanActions.modifyContent(id,content));
-    }
+    },
+    modifyDate: (id,date) => {
+      dispatch(PlanActions.modifyDate(id,content));
+    },
+    modifyPriority: (id,priority) => {
+      dispatch(PlanActions.modifyPriority(id,priority));
+    },
+    modifyStatus: (id,status) => {
+      dispatch(PlanActions.modifyStatus(id,status));
+    },
   };
 }
 
