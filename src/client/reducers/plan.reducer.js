@@ -21,7 +21,6 @@ const plan = (state = initialState, action) => {
       });
 
     case PlanConstants.RECEIVE_PLAN_SUCCESS:
-      console.log(action.plans);
       return Object.assign({},state,{ plans:action.plans});
 
     case PlanConstants.RECEIVE_PLAN_FAILURE:

@@ -5,7 +5,7 @@ export const PlanActions = {
   setFormStatus,
   show,
   create,
-  destory,
+  destroy,
   modifyTitle,
   modifyContent,
   modifyPriority,
@@ -53,7 +53,7 @@ function create(title,content){
   function failure(err) {return {type: PlanConstants.CREATE_PLAN_FAILURE, err}};
 }
 
-function destory(id){
+function destroy(id){
   return dispatch => {
     PlanService.destroy(id)
       .then(
@@ -91,7 +91,7 @@ function modifyTitle(id,title){
 
 function modifyContent(id,content){
   return dispatch => {
-    PlanService.modifyTitle(id,content)
+    PlanService.modifyContent(id,content)
       .then(
         (plan) => {
           dispatch(success(plan));
@@ -109,7 +109,7 @@ function modifyContent(id,content){
 
 function modifyPriority(id,content){
   return dispatch => {
-    PlanService.modifyTitle(id,content)
+    PlanService.modifyPriority(id,content)
       .then(
         (plan) => {
           dispatch(success(plan));
@@ -127,7 +127,7 @@ function modifyPriority(id,content){
 
 function modifyStatus(id,status){
   return dispatch => {
-    PlanService.modifyTitle(id,status)
+    PlanService.modifyStatus(id,status)
       .then(
         (plan) => {
           dispatch(success(plan));
@@ -145,7 +145,7 @@ function modifyStatus(id,status){
 
 function modifyDate(id,date){
   return dispatch => {
-    PlanService.modifyTitle(id,date)
+    PlanService.modifyDate(id,date)
       .then(
         (plan) => {
           dispatch(success(plan));
