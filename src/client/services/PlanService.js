@@ -107,6 +107,9 @@ function modifyStatus(id,status){
 }
 
 function modifyDate(id,date){
+  if(date===""){
+    date="empty";
+  }
   return axios.patch('/api/plans/date/'+id+'/'+date)
   .then(res => {
     const plan = {

@@ -3,44 +3,69 @@ import '../styles/ToDo.css';
 class Alarm extends Component{
   constructor(props){
       super(props);
-      if(this.props.date!=null){
-        const q = new Date();
-        const m = q.getMonth()+1;
-        const d = q.getDay();
-        const y = q.getFullYear();
-
-        const date = new Date(y,m,d);
-
-        const mydate = this.props.date.split(".");
-        const deadline = ""+mydate[0]+"-"+mydate[1]+"-"+mydate[2];
-        if(date>deadline){
-          this.state={
-            alarmState: "#ff0000"
-          }
-        }else if(date==deadline)
-        {
-          this.state={
-            alarmState: "#faff00"
-          }
-        }else{
-          this.state={
-            alarmState: "#00d10a"
-          }
+      console.log(this.props.date);
+      if(this.props.date==="" ||this.props.date==null){
+        this.state={
+          alarmState: "#cdcdcd",
+          alarmMessage: ""
         }
       }else{
-        this.state={
-          alarmState: "#f5f5f5"
+        let date = new Date();
+        let mydate = this.props.date.split(".");
+        if(date.getFullYear()+0>Number(mydate[0])){
+          this.state={
+            alarmState: "#ff0000", //red
+            alarmMessage: "마감기한초과"
+          }
+        }else if(date.getFullYear()+0<Number(mydate[0])){
+          this.state={
+            alarmState: "#00d10a", //green
+            alarmMessage: "마감까지 여유롭네요"
+          }
+        }else{
+          if(date.getMonth()+1>Number(mydate[1])){
+            this.state={
+              alarmState: "#ff0000",
+              alarmMessage: "마감기한초과"
+            }
+          }else if(date.getMonth()+1<Number(mydate[1])){
+            this.state={
+              alarmState: "#00d10a",
+              alarmMessage: "마감까지 여유롭네요"
+            }
+          }else{
+            if(date.getDay()>Number(mydate[2])){
+              this.state={
+                alarmState: "#ff0000",
+                alarmMessage: "마감기한초과"
+              }
+            }else if(date.getDay()<Number(mydate[2])){
+              this.state={
+                alarmState: "#00d10a",
+                alarmMessage: "마감까지 여유롭네요"
+              }
+            }else if(date.getDay()==Number(mydate[2])){
+              console.log("equal");
+              this.state={
+                alarmState: "#faff00",
+                alarmMessage: "오늘이 마감일이네요"
+              }
+            }else{
+              this.state={
+                alarmState: "#cdcdcd",
+                alarmMessage: ""
+              }
+            }
+          }
         }
       }
   }
-
-
-
 
   render(){
 
     return(
       <div className="todo_alarm" onClick={this.handleClick} style={{backgroundColor:this.state.alarmState}}>
+        {this.state.alarmMessage}
       </div>
     );
   }

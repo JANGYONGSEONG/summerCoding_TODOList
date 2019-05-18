@@ -25,6 +25,7 @@ class App extends Component{
     return(
       <div className="wrap">
         <div className="header">
+          <span className="header_title">SummerCoding ToDoList</span>
           <AddButton setFormStatus={this.props.setFormStatus} isCreatePlanOn={this.props.isCreatePlanOn}/>
         </div>
         <div className="content">

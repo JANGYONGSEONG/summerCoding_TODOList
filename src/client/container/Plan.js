@@ -51,6 +51,7 @@ class Plan extends Component{
     switch(e.target.name){
       case "save":
         this.props.create(this.state.value.title,this.state.value.content);
+        this.props.setFormStatus(false);
         break;
 
       case "cancel":
@@ -121,7 +122,6 @@ class Plan extends Component{
             <Date id={this.props.plan.id} date={this.props.plan.date} modifyDate={this.props.modifyDate}/>
             <Priority id={this.props.plan.id} priority={this.props.plan.priority} modifyPriority={this.props.modifyPriority}/>
             <Status id={this.props.plan.id} status={this.props.plan.status} modifyStatus={this.props.modifyStatus}/>
-            <Alarm id={this.props.plan.id} date={this.props.plan.date}/>
           </div>
           <div className="todo_plan_btn_wrapper">
             <button className="todo_delete_btn" onClick={this.handleClick} name="remove">삭제</button>

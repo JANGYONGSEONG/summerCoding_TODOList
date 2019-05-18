@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Alarm from './Alarm';
 import '../styles/ToDo.css';
 class Date extends Component{
   constructor(props){
@@ -19,31 +20,36 @@ class Date extends Component{
     }));
   }
 
+
   handleClick(){
     this.props.modifyDate(this.props.id,this.state.date);
     this.setState(state => ({
-      isSelectOn: !state.isSelectOn
+      isdateChange: !state.isdateChange
     }));
   }
 
   render(){
     let dateChangeButton;
+    var emptyMessage;
+    var alarmMessage;
     if(this.state.isdateChange){
       dateChangeButton = <button className="todo_date_btn"onClick={this.handleClick} name="date_change">수정</button>
+      emptyMessage = <Alarm date={""}/>
+    }else{
+      alarmMessage = <Alarm date={this.state.date}/>
     }
 
-    let placeholder;
-    let defaultValue
-    if(this.state.date===null){
-      placeholder = "ex)2019.05.20";
-    }else{
-      defaultValue= this.state.date;
-    }
+    let placeholder = "ex)2019.05.20";
+    let defaultValue = this.state.date;
 
     return(
-      <div className="todo_date">
-        <input className="todo_date_input" type="text" name="date" placeholder={placeholder} defaultValue={defaultValue} onChange={this.handleChange}/>
-        {dateChangeButton}
+      <div>
+        <div className="todo_date">
+          <input className="todo_date_input" type="text" name="date" placeholder={placeholder} defaultValue={defaultValue} onChange={this.handleChange}/>
+          {dateChangeButton}
+        </div>
+        {emptyMessage}
+        {alarmMessage}
       </div>
     );
   }

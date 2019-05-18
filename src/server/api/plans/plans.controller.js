@@ -125,16 +125,29 @@ exports.modifyContent = (req,res) => {
 exports.modifyDate = (req,res) => {
   const id = req.params.id;
   const date = req.params.date;
-  connection.query('update plan set date = ? where id = ?',[date,id],function(err,result){
-    if(err){
-      throw err;
-    }
-    return res.status(200).json(
-      {
-        date: date
+  if(date==="empty"){
+    connection.query('update plan set date = NULL where id = ?',[id],function(err,result){
+      if(err){
+        throw err;
       }
-    );
-  });
+      return res.status(200).json(
+        {
+          date: ""
+        }
+      );
+    });
+  }else{
+    connection.query('update plan set date = ? where id = ?',[date,id],function(err,result){
+      if(err){
+        throw err;
+      }
+      return res.status(200).json(
+        {
+          date: date
+        }
+      );
+    });
+  }
 }
 
 exports.modifyPriority = (req,res) => {
