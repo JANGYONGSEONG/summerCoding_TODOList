@@ -65,7 +65,11 @@ exports.create = (req,res) => {
         return res.status(201).json({
           id: row[0].id,
           title: title,
-          content: content
+          content: content,
+          date:"",
+          priority:"",
+          status:"",
+          alarm:""
         });
       });
     }
