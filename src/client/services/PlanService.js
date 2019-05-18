@@ -43,7 +43,6 @@ function create(title,content){
 function destroy(id){
   return axios.delete('/api/plans/'+id)
   .then(res => {
-    console.log(res);
     return;
   })
   .catch(err => {

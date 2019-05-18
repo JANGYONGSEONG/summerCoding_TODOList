@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {AddButton} from "./components";
 import {Plan} from "./container";
 import {PlanActions} from "./actions";
+import './styles/ToDo.css';
 
 class App extends Component{
   constructor(props){
@@ -11,7 +12,6 @@ class App extends Component{
 
   render(){
     this.props.getPlan();
-
     let planForm;
     if (this.props.isCreatePlanOn) {
      planForm = <Plan isForm={true}/>;
@@ -23,11 +23,11 @@ class App extends Component{
     ))
 
     return(
-      <div>
+      <div className="wrap">
         <div className="header">
           <AddButton setFormStatus={this.props.setFormStatus} isCreatePlanOn={this.props.isCreatePlanOn}/>
         </div>
-        <div className="body">
+        <div className="content">
           {planForm}
           {plans}
         </div>

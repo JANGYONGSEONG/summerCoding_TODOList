@@ -1,0 +1,208 @@
+.wrap{
+  display: flex;
+  flex-direction: column;
+  height:100%;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  flex:1;
+}
+
+.todo_add{
+  display: inline-block;
+}
+
+.todo_add_btn{
+  background-color: #0089c3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.todo_plan{
+  display: flex;
+  flex-direction: row;
+  flex:1;
+}
+
+.todo_plan_form{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+}
+
+.todo_plan_input_wrapper{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+}
+
+.todo_plan_btn_wrapper{
+  display: flex;
+  flex-direction: row;
+  width:100px;
+}
+
+.todo_priority_wrapper, .todo_status_wrapper, .todo_priority_btn_wrapper, .todo_priority_btn_wrapper, .todo_delete{
+  display:inline-block;
+}
+
+.todo_plan_left{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+}
+
+.todo_plan_right{
+  display: flex;
+  flex-direction: column;
+  width:200px;
+}
+
+.todo_save_btn, .todo_date_btn, .todo_cancel_btn, .todo_update_btn, .todo_delete_btn{
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.todo_input_title{
+  display:inline-block;
+  width: 400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.todo_input_title:focus{
+  border: 3px solid #555;
+}
+
+.todo_input_content{
+  display:inline-block;
+  width: 400px;
+  height: 200px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.todo_input_content:focus{
+  border: 3px solid #555;
+}
+
+.todo_status{
+  width:150px;
+  height:20px;
+  background-color: #4ad69c;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.todo_priority{
+  width:150px;
+  height:20px;
+  background-color: #fbc175;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.todo_priority_btn, .todo_status_btn{
+  background-color: #0089c3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.todo_date{
+  width:150px;
+  height:20px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.todo_date_input{
+  display:inline-block;
+  text-align: center;
+  width: 100px;
+  margin: 3px 0;
+  box-sizing: border-box;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  cursor: pointer;
+}
+
+.todo_date_input:focus{
+  border: 3px solid #555;
+}
+
+.todo_alarm{
+  width:150px;
+  height:20px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

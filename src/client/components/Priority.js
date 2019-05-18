@@ -51,16 +51,16 @@ class Priority extends Component{
     let item;
     if(this.state.isSelectOn){
       item = (
-        <div>
-          <button onClick={this.handleClickButton} name="high">High</button>
-          <button onClick={this.handleClickButton} name="medium">Medium</button>
-          <button onClick={this.handleClickButton} name="low">Low</button>
-          <button onClick={this.handleClickButton} name="empty">null</button>
+        <div className="todo_priority_btn_wrapper">
+          <button className="todo_priority_btn" onClick={this.handleClickButton} name="high">High</button>
+          <button className="todo_priority_btn" onClick={this.handleClickButton} name="medium">Medium</button>
+          <button className="todo_priority_btn" onClick={this.handleClickButton} name="low">Low</button>
+          <button className="todo_priority_btn" onClick={this.handleClickButton} name="empty">null</button>
         </div>
       )
     }
     return(
-      <div>
+      <div className="todo_priority_wrapper">
         <div className="todo_priority" onClick={this.handleClick}>
           {this.props.priority}
         </div>

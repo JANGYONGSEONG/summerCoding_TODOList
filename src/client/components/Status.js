@@ -51,16 +51,16 @@ class Status extends Component{
     let item;
     if(this.state.isSelectOn){
       item = (
-        <div>
-          <button onClick={this.handleClickButton} name="work">Working on it</button>
-          <button onClick={this.handleClickButton} name="stuck">Stuck</button>
-          <button onClick={this.handleClickButton} name="done">Done</button>
-          <button onClick={this.handleClickButton} name="empty">null</button>
+        <div className="todo_status_btn_wrapper">
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="work">Working on it</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="stuck">Stuck</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="done">Done</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="empty">null</button>
         </div>
       )
     }
     return(
-      <div>
+      <div className="todo_status_wrapper">
         <div className="todo_status" onClick={this.handleClick}>
           {this.props.status}
         </div>

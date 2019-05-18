@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import '../styles/ToDo.css';
 class AddButton extends Component{
   constructor(props){
     super(props);
@@ -14,8 +14,8 @@ class AddButton extends Component{
 
   render(){
     return(
-      <div>
-        <button onClick = {this.handleClick}>
+      <div className="todo_add">
+        <button className="todo_add_btn" onClick={this.handleClick}>
           + new
         </button>
       </div>
