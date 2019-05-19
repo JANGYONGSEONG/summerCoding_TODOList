@@ -12,7 +12,7 @@ export const PlanService = {
 };
 
 function show(){
-  return axios.get('/api/plans')
+  return axios.get('/plans')
     .then(res => {
       const plans = res.data.plans;
       return plans;
@@ -23,7 +23,7 @@ function show(){
 };
 
 function create(title,content){
-  return axios.post('/api/plans',{
+  return axios.post('/plans',{
     title: title,
     content: content
   })
@@ -41,7 +41,7 @@ function create(title,content){
 };
 
 function destroy(id){
-  return axios.delete('/api/plans/'+id)
+  return axios.delete('/plans/'+id)
   .then(res => {
     return;
   })
@@ -51,7 +51,7 @@ function destroy(id){
 };
 
 function modifyTitle(id,title){
-  return axios.patch('/api/plans/title/'+id+'/'+title)
+  return axios.patch('/plans/title/'+id+'/'+title)
   .then(res => {
     const plan = {
       id: res.data.id,
@@ -65,7 +65,7 @@ function modifyTitle(id,title){
 };
 
 function modifyContent(id,content){
-  return axios.patch('/api/plans/content/'+id+'/'+content)
+  return axios.patch('/plans/content/'+id+'/'+content)
   .then(res => {
     const plan = {
       id: res.data.id,
@@ -79,7 +79,7 @@ function modifyContent(id,content){
 }
 
 function modifyPriority(id,priority){
-  return axios.patch('/api/plans/priority/'+id+'/'+priority)
+  return axios.patch('/plans/priority/'+id+'/'+priority)
   .then(res => {
     const plan = {
       id: res.data.id,
@@ -93,7 +93,7 @@ function modifyPriority(id,priority){
 }
 
 function modifyStatus(id,status){
-  return axios.patch('/api/plans/status/'+id+'/'+status)
+  return axios.patch('/plans/status/'+id+'/'+status)
   .then(res => {
     const plan = {
       id: res.data.id,
@@ -110,7 +110,7 @@ function modifyDate(id,date){
   if(date===""){
     date="empty";
   }
-  return axios.patch('/api/plans/date/'+id+'/'+date)
+  return axios.patch('/plans/date/'+id+'/'+date)
   .then(res => {
     const plan = {
       id: res.data.id,

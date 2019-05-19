@@ -79,18 +79,28 @@ class Status extends Component{
     if(this.state.isSelectOn){
       item = (
         <div className="todo_status_btn_wrapper">
-          <button className="todo_status_btn" onClick={this.handleClickButton} name="stuck" style={{backgroundColor:"#ff0000"}}>Stuck</button>
-          <button className="todo_status_btn" onClick={this.handleClickButton} name="work" style={{backgroundColor:"#faff00"}}>Working on it</button>
-          <button className="todo_status_btn" onClick={this.handleClickButton} name="done" style={{backgroundColor:"#00d10a"}}>Done</button>
-          <button className="todo_status_btn" onClick={this.handleClickButton} name="empty" style={{backgroundColor:"#0089c3"}}>None</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="stuck" style={{backgroundColor:"#ff0000"}}>문제 발생</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="work" style={{backgroundColor:"#faff00"}}>진행 중</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="done" style={{backgroundColor:"#00d10a"}}>완료</button>
+          <button className="todo_status_btn" onClick={this.handleClickButton} name="empty" style={{backgroundColor:"#0089c3"}}>상태</button>
         </div>
       )
     }
     let status;
     if(this.props.status==null){
-      status="Status"
+      status="상태"
     }else{
-      status=this.props.status;
+      switch(this.props.status){
+        case "Working on it":
+          status = "진행 중";
+          break;
+        case "Stuck":
+          status = "문제 발생";
+          break;
+        case "Done":
+          status = "완료";
+          break;
+      }
     }
     return(
       <div className="todo_status_wrapper">

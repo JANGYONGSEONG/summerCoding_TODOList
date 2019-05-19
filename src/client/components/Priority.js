@@ -82,13 +82,13 @@ class Priority extends Component{
           <button className="todo_priority_btn" onClick={this.handleClickButton} name="high" style={{backgroundColor:"#ff0000"}}>High</button>
           <button className="todo_priority_btn" onClick={this.handleClickButton} name="medium" style={{backgroundColor:"#faff00"}}>Medium</button>
           <button className="todo_priority_btn" onClick={this.handleClickButton} name="low" style={{backgroundColor:"#00d10a"}}>Low</button>
-          <button className="todo_priority_btn" onClick={this.handleClickButton} name="empty" style={{backgroundColor:"#0089c3"}}>None</button>
+          <button className="todo_priority_btn" onClick={this.handleClickButton} name="empty" style={{backgroundColor:"#0089c3"}}>우선순위</button>
         </div>
       )
     }
     let priority;
     if(this.props.priority==null){
-      priority="Priority"
+      priority="우선순위"
     }else{
       priority=this.props.priority;
     }

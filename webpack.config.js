@@ -38,10 +38,11 @@ module.exports = {
     ]
   },
   devServer: {
+    host:'172.31.23.41',
     port:3000,
     open:true,
     proxy: {
-      "/api/*": {
+      "**": {
       target: "http://localhost:8080",
       changeOrigin: true,
       pathRewrite: {'^/api' : ''}

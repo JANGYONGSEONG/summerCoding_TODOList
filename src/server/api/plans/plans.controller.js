@@ -23,7 +23,7 @@ function handleDisconnect(){
   });
 
   connection.on('error', function onError(err){
-    console.log();
+    console.log('db error', err);
     if(err.code == 'PROTOCOL_CONNECTION_LOST'){
       handleDisconnect();
     }else{

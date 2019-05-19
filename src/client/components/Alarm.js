@@ -3,7 +3,6 @@ import '../styles/ToDo.css';
 class Alarm extends Component{
   constructor(props){
       super(props);
-      console.log(this.props.date);
       if(this.props.date==="" ||this.props.date==null){
         this.state={
           alarmState: "#cdcdcd",
@@ -12,12 +11,12 @@ class Alarm extends Component{
       }else{
         let date = new Date();
         let mydate = this.props.date.split(".");
-        if(date.getFullYear()+0>Number(mydate[0])){
+        if(date.getFullYear()>Number(mydate[0])){
           this.state={
             alarmState: "#ff0000", //red
             alarmMessage: "마감기한초과"
           }
-        }else if(date.getFullYear()+0<Number(mydate[0])){
+        }else if(date.getFullYear()<Number(mydate[0])){
           this.state={
             alarmState: "#00d10a", //green
             alarmMessage: "마감까지 여유롭네요"
@@ -34,18 +33,17 @@ class Alarm extends Component{
               alarmMessage: "마감까지 여유롭네요"
             }
           }else{
-            if(date.getDay()>Number(mydate[2])){
+            if(date.getDate()>Number(mydate[2])){
               this.state={
                 alarmState: "#ff0000",
                 alarmMessage: "마감기한초과"
               }
-            }else if(date.getDay()<Number(mydate[2])){
+            }else if(date.getDate()<Number(mydate[2])){
               this.state={
                 alarmState: "#00d10a",
                 alarmMessage: "마감까지 여유롭네요"
               }
-            }else if(date.getDay()==Number(mydate[2])){
-              console.log("equal");
+            }else if(date.getDate()==Number(mydate[2])){
               this.state={
                 alarmState: "#faff00",
                 alarmMessage: "오늘이 마감일이네요"
