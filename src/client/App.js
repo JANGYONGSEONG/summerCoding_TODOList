@@ -10,8 +10,11 @@ class App extends Component{
     super(props);
   }
 
-  render(){
+  componentDidMount(){
     this.props.getPlan();
+  }
+
+  render(){
     let planForm;
     if (this.props.isCreatePlanOn) {
      planForm = <Plan isForm={true}/>;
