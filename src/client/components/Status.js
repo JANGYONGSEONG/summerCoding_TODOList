@@ -82,6 +82,10 @@ class Status extends Component{
     }
   }
 
+  componentDidMount(){
+
+  }
+
   render(){
     let item;
     if(this.state.isSelectOn){
@@ -95,10 +99,7 @@ class Status extends Component{
       )
     }
     let status;
-    if(this.props.status==null){
-      status="상태"
-    }else{
-      switch(this.state.status){
+    switch(this.state.status){
         case "Working on it":
           status = "진행 중";
           break;
@@ -111,7 +112,6 @@ class Status extends Component{
         default:
           status = "상태"
           break;
-      }
     }
     return(
       <div className="todo_status_wrapper">

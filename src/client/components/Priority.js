@@ -94,16 +94,10 @@ class Priority extends Component{
         </div>
       )
     }
-    let priority;
-    if(this.props.priority==null){
-      priority="우선순위"
-    }else{
-      priority=this.state.priority;
-    }
     return(
       <div className="todo_priority_wrapper">
         <div className="todo_priority" onClick={this.handleClick} style={{backgroundColor:this.state.backgroundColor}}>
-          {priority}
+          {this.state.priority}
         </div>
         {item}
       </div>
