@@ -121,8 +121,8 @@ function modifyPriority(id,content){
         }
       )
   };
-  function success(plan) {return {type: PlanConstants.CHANGE_CONTENT_SUCCESS, plan}};
-  function failure(err) {return {type: PlanConstants.CHANGE_CONTENT_FAILURE, err}};
+  function success(plan) {return {type: PlanConstants.CHANGE_PRIORITY_SUCCESS, plan}};
+  function failure(err) {return {type: PlanConstants.CHANGE_PRIORITY_FAILURE, err}};
 }
 
 function modifyStatus(id,status){

@@ -7,25 +7,29 @@ class Status extends Component{
       case "Working on it":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#faff00"
+          backgroundColor:"#faff00",
+          status:"Working on it"
         }
       break;
       case "Stuck":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#ff0000"
+          backgroundColor:"#ff0000",
+          status:"Stuck"
         }
       break;
       case "Done":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#00d10a"
+          backgroundColor:"#00d10a",
+          status:"Done"
         }
       break;
       default:
         this.state={
           isSelectOn: false,
-          backgroundColor:"#0089c3"
+          backgroundColor:"#0089c3",
+          status:""
         }
       break;
     }
@@ -45,28 +49,32 @@ class Status extends Component{
         this.props.modifyStatus(this.props.id,"Working on it");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#faff00"
+          backgroundColor:"#faff00",
+          status:"Working on it"
         }));
         break;
       case "stuck":
         this.props.modifyStatus(this.props.id,"Stuck");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#ff0000"
+          backgroundColor:"#ff0000",
+          status:"Stuck"
         }));
         break;
       case "done":
         this.props.modifyStatus(this.props.id,"Done");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#00d10a"
+          backgroundColor:"#00d10a",
+          status:"Done"
         }));
         break;
       case "empty":
         this.props.modifyStatus(this.props.id,"empty");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#0089c3"
+          backgroundColor:"#0089c3",
+          status:""
         }));
         break;
       default:
@@ -90,7 +98,7 @@ class Status extends Component{
     if(this.props.status==null){
       status="상태"
     }else{
-      switch(this.props.status){
+      switch(this.state.status){
         case "Working on it":
           status = "진행 중";
           break;
@@ -99,6 +107,9 @@ class Status extends Component{
           break;
         case "Done":
           status = "완료";
+          break;
+        default:
+          status = "상태"
           break;
       }
     }

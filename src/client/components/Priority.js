@@ -7,25 +7,29 @@ class Priority extends Component{
       case "High":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#ff0000"
+          backgroundColor:"#ff0000",
+          priority: "High"
         }
       break;
       case "Medium":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#faff00"
+          backgroundColor:"#faff00",
+          priority: "Medium"
         }
       break;
       case "Low":
         this.state={
           isSelectOn: false,
-          backgroundColor:"#00d10a"
+          backgroundColor:"#00d10a",
+          priority: "Low"
         }
       break;
       default:
         this.state={
           isSelectOn: false,
-          backgroundColor:"#0089c3"
+          backgroundColor:"#0089c3",
+          priority: "우선순위"
         }
       break;
     }
@@ -45,28 +49,32 @@ class Priority extends Component{
         this.props.modifyPriority(this.props.id,"High");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#ff0000"
+          backgroundColor:"#ff0000",
+          priority:"High"
         }));
         break;
       case "medium":
         this.props.modifyPriority(this.props.id,"Medium");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#faff00"
+          backgroundColor:"#faff00",
+          priority: "Medium"
         }));
         break;
       case "low":
         this.props.modifyPriority(this.props.id,"Low");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#00d10a"
+          backgroundColor:"#00d10a",
+          priority: "Low"
         }));
         break;
       case "empty":
         this.props.modifyPriority(this.props.id,"empty");
         this.setState(state => ({
           isSelectOn: !state.isSelectOn,
-          backgroundColor:"#0089c3"
+          backgroundColor:"#0089c3",
+          priority: "우선순위"
         }));
         break;
       default:
@@ -90,7 +98,7 @@ class Priority extends Component{
     if(this.props.priority==null){
       priority="우선순위"
     }else{
-      priority=this.props.priority;
+      priority=this.state.priority;
     }
     return(
       <div className="todo_priority_wrapper">
