@@ -22,10 +22,12 @@ class Date extends Component{
 
 
   handleClick(){
-    this.props.modifyDate(this.props.id,this.state.date);
-    this.setState(state => ({
-      isdateChange: !state.isdateChange
-    }));
+    if(this.state.date.indexOf('.')!==-1 && this.state.date.split('.').length===3){
+      this.props.modifyDate(this.props.id,this.state.date);
+      this.setState(state => ({
+        isdateChange: !state.isdateChange
+      }));
+    }
   }
 
   render(){
@@ -45,7 +47,7 @@ class Date extends Component{
     return(
       <div>
         <div className="todo_date">
-          <input className="todo_date_input" type="text" name="date" placeholder={placeholder} defaultValue={defaultValue} onChange={this.handleChange}/>
+          <input className="todo_date_input" type="text" name="date" maxlength="10" placeholder={placeholder} defaultValue={defaultValue} onChange={this.handleChange}/>
           {dateChangeButton}
         </div>
         {emptyMessage}
